@@ -1,5 +1,6 @@
 import { FormControl, MenuItem, Select } from "@material-ui/core";
 import React, { useState, useEffect, response } from "react";
+import InfoBox from "./InfoBox";
 import "./App.css";
 
 function App() {
@@ -45,7 +46,12 @@ function App() {
         </FormControl>
         {/* BEM convention for class names : http://getbem.com/naming/ */}
       </div>
-      <div className="app__stats">{/* Infoboxes */}</div>
+      <div className="app__stats">
+        {/* Infoboxes */}
+        <InfoBox title="Coronavirus Cases" cases="123" total={3000} />
+        <InfoBox title="Recovered" cases="1234" total={2000} />
+        <InfoBox title="Deaths" cases="12345" total={1000} />
+      </div>
       {/* Table */}
       {/* Graph */}
       {/* Map */}
