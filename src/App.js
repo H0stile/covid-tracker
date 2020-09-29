@@ -13,6 +13,7 @@ import "./App.css";
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState(["worldwide"]); //!  worldwide and not Worldwide
+  const [countryInfo, setCountryInfo] = useState({});
   {
     /* API call to
             https://disease.sh/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_countries */
@@ -35,8 +36,19 @@ function App() {
   // If [] left blank : runs one on the opening then never again
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    setCountry(countryCode);
+
+    const url =
+      countryCode === "worldwide"
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setCountry(countryCode);
+        setCountryInfo(data);
+      });
   };
+  console.log("country info : ", countryInfo);
   return (
     <div className="app">
       <div className="app__left">
@@ -60,9 +72,21 @@ function App() {
         </div>
         <div className="app__stats">
           {/* Infoboxes */}
-          <InfoBox title="Coronavirus Cases" cases="123" total={3000} />
-          <InfoBox title="Recovered" cases="1234" total={2000} />
-          <InfoBox title="Deaths" cases="12345" total={1000} />
+          <InfoBox
+            title="Coronavirus Cases"
+            cases={countryInfo.todayCases}
+            total={countryInfo.cases}
+          />
+          <InfoBox
+            title="Recovered"
+            cases={countryInfo.todayRecovered}
+            total={countryInfo.recovered}
+          />
+          <InfoBox
+            title="Deaths"
+            cases={countryInfo.todayDeaths}
+            total={countryInfo.deaths}
+          />
         </div>
         {/* Map */}
         <Map />
