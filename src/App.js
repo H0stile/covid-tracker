@@ -18,6 +18,16 @@ function App() {
     /* API call to
             https://disease.sh/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_countries */
   }
+
+  // To get data when you open the page. Before that you would need to select a country in the list to get data (since we were fetching from countries and not the "all" url at start)
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      });
+  }, []);
+
   useEffect(() => {
     // async -> send a request, wait for it, do something
     const getCountriesData = async () => {
