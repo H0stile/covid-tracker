@@ -8,12 +8,15 @@ import {
 import React, { useState, useEffect, response } from "react";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
+import Table from "./Table";
 import "./App.css";
+import { sortData } from "./util";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState(["worldwide"]); //!  worldwide and not Worldwide
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
   {
     /* API call to
             https://disease.sh/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_countries */
@@ -38,6 +41,8 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso2,
           }));
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
@@ -103,10 +108,11 @@ function App() {
       </div>
       <Card className="app__right">
         <CardContent>
-          <h3>Live cases by country</h3>
-          <h3>Worldwide new cases</h3>
           {/* Table */}
+          <h3>Live cases by country</h3>
+          <Table countries={tableData}></Table>
           {/* Graph */}
+          <h3>Worldwide new cases</h3>
         </CardContent>
       </Card>
     </div>
