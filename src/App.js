@@ -45,8 +45,7 @@ function App() {
         </FormControl>
         {/* BEM convention for class names : http://getbem.com/naming/ */}
       </div>
-
-      {/* Infoboxes */}
+      <div className="app__stats">{/* Infoboxes */}</div>
       {/* Table */}
       {/* Graph */}
       {/* Map */}
