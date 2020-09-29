@@ -1,6 +1,13 @@
-import { FormControl, MenuItem, Select } from "@material-ui/core";
+import {
+  FormControl,
+  MenuItem,
+  Select,
+  Card,
+  CardContent,
+} from "@material-ui/core";
 import React, { useState, useEffect, response } from "react";
 import InfoBox from "./InfoBox";
+import Map from "./Map";
 import "./App.css";
 
 function App() {
@@ -32,29 +39,42 @@ function App() {
   };
   return (
     <div className="app">
-      {/* Header */}
-      <div className="app__header">
-        {/* Title + select input dropdown field */}
-        <h1>COVID-19 Tracker</h1>
-        <FormControl className="app__drowpdown">
-          <Select variant="outlined" value={country} onChange={onCountryChange}>
-            <MenuItem value="worldwide">Worldwide</MenuItem>
-            {countries.map((country) => (
-              <MenuItem value={country.value}>{country.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {/* BEM convention for class names : http://getbem.com/naming/ */}
+      <div className="app__left">
+        {/* Header */}
+        <div className="app__header">
+          {/* Title + select input dropdown field */}
+          <h1>COVID-19 Tracker</h1>
+          <FormControl className="app__drowpdown">
+            <Select
+              variant="outlined"
+              value={country}
+              onChange={onCountryChange}
+            >
+              <MenuItem value="worldwide">Worldwide</MenuItem>
+              {countries.map((country) => (
+                <MenuItem value={country.value}>{country.name}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          {/* BEM convention for class names : http://getbem.com/naming/ */}
+        </div>
+        <div className="app__stats">
+          {/* Infoboxes */}
+          <InfoBox title="Coronavirus Cases" cases="123" total={3000} />
+          <InfoBox title="Recovered" cases="1234" total={2000} />
+          <InfoBox title="Deaths" cases="12345" total={1000} />
+        </div>
+        {/* Map */}
+        <Map />
       </div>
-      <div className="app__stats">
-        {/* Infoboxes */}
-        <InfoBox title="Coronavirus Cases" cases="123" total={3000} />
-        <InfoBox title="Recovered" cases="1234" total={2000} />
-        <InfoBox title="Deaths" cases="12345" total={1000} />
-      </div>
-      {/* Table */}
-      {/* Graph */}
-      {/* Map */}
+      <Card className="app__right">
+        <CardContent>
+          <h3>Live cases by country</h3>
+          <h3>Worldwide new cases</h3>
+          {/* Table */}
+          {/* Graph */}
+        </CardContent>
+      </Card>
     </div>
   );
 }
