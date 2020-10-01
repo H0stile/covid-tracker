@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Covid tracker app made following Clever Programmer course, using React & Firebase
+
+Test it live :
+
+https://covid-tracker-b319b.web.app/
+
+
+
 
 ## Available Scripts
 
