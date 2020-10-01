@@ -19,6 +19,8 @@ function App() {
   const [country, setCountry] = useState(["worldwide"]); //!  worldwide and not Worldwide
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 34.8 / 46, lng: -40.4796 });
+  const [mapZoom, setMapZoom] = useState(3);
   {
     /* API call to
             https://disease.sh/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_countries */
@@ -106,7 +108,7 @@ function App() {
           />
         </div>
         {/* Map */}
-        <Map />
+        <Map center={mapCenter} zoom={mapZoom} />
       </div>
       <Card className="app__right">
         <CardContent>
