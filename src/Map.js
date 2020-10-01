@@ -2,7 +2,7 @@ import React from "react";
 import "./Map.css";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 
-function Map({ center, zoom }) {
+function Map({ countries, center, zoom }) {
   // Nothing will show untill we import CSS in app.js and style the map with Map.css
   return (
     <div className="map">
