@@ -80,7 +80,7 @@ function App() {
         <div className="app__header">
           {/* Title + select input dropdown field */}
           <h1>COVID-19 Tracker</h1>
-          <FormControl className="app__drowpdown">
+          <FormControl className="app__dropdown">
             <Select
               variant="outlined"
               value={country}
@@ -135,7 +135,7 @@ function App() {
           <Table countries={tableData}></Table>
           {/* Graph */}
           <h3>Worldwide new {casesType}</h3>
-          <LineGraph casesType={casesType} />
+          <LineGraph className="app__graph" casesType={casesType} />
         </CardContent>
       </Card>
     </div>

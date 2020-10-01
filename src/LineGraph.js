@@ -61,7 +61,7 @@ const buildChartData = (data, casesType = "cases") => {
   return chartData;
 };
 
-function LineGraph({ casesType }) {
+function LineGraph({ casesType = "cases", ...props }) {
   const [data, setData] = useState({});
   //https://disease.sh/v3/covid-19/historical/all?lastdays=30
 
@@ -80,7 +80,7 @@ function LineGraph({ casesType }) {
   }, [casesType]);
 
   return (
-    <div>
+    <div className={props.className}>
       {/* check to see if data is populated */}
       {/* ? means : check if data exist, could also be written :
        {data && data.length > 0 && (*/}
