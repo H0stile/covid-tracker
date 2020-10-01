@@ -1,0 +1,25 @@
+.infoBox {
+  flex: 1;
+}
+
+/* Apply this rule to every child BUT the last one */
+.infoBox:not(:last-child) {
+  margin-right: 15px;
+}
+
+.infoBox__cases {
+  color: #cc1034;
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* The rule !important overwrite framework rules (here material-ui)
+check: https://www.alsacreations.com/actu/lire/1734-le-w3c-etend-la-portee-de-css-important.html
+ */
+.infoBox__total {
+  color: #6c757d;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  margin-bottom: 15px !important;
+}

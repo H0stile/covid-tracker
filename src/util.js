@@ -35,6 +35,9 @@ export const sortData = (data) => {
   return sortedData;
 };
 
+export const prettyPrintStat = (stat) =>
+  stat ? `+${numeral(stat).format("0.0a")}` : +0;
+
 //  Draw circle on the map with interactive tooltip
 export const showDataOnMap = (data, casesType = "cases") =>
   data.map((country) => (
@@ -48,14 +51,21 @@ export const showDataOnMap = (data, casesType = "cases") =>
       }
     >
       <Popup>
-        <div>
+        <div className="info-cotnainer">
           <div
+            className="info-flag"
             style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
           />
-          <div>{country.country}</div>
-          <div>Cases: {numeral(country.cases).format("0,0")}</div>
-          <div>Recovered: {numeral(country.cases).format("0,0")}</div>
-          <div>Deaths: {numeral(country.cases).format("0,0")}</div>
+          <div className="info-name">{country.country}</div>
+          <div className="info-cases">
+            Cases: {numeral(country.cases).format("0,0")}
+          </div>
+          <div className="info-recovered">
+            Recovered: {numeral(country.cases).format("0,0")}
+          </div>
+          <div className="info-deaths">
+            Deaths: {numeral(country.cases).format("0,0")}
+          </div>
         </div>
       </Popup>
     </Circle>
