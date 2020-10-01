@@ -1,5 +1,6 @@
 .infoBox {
   flex: 1;
+  cursor: pointer;
 }
 
 /* Apply this rule to every child BUT the last one */
@@ -7,11 +8,27 @@
   margin-right: 15px;
 }
 
+.infoBox--selected {
+  border-top: 10px solid greenyellow;
+}
+.infoBox--red {
+  border-color: red;
+}
+.infoBox--black {
+  border-color: black;
+}
+
 .infoBox__cases {
   color: #cc1034;
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
+}
+.infoBox__cases--green {
+  color: greenyellow;
+}
+.infoBox__cases--black {
+  color: black;
 }
 
 /* The rule !important overwrite framework rules (here material-ui)
