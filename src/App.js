@@ -12,6 +12,7 @@ import Table from "./Table";
 import LineGraph from "./LineGraph";
 import "./App.css";
 import { sortData } from "./util";
+import "leaflet/dist/leaflet.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
